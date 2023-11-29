@@ -32,6 +32,7 @@ Make the code as extensive as possible with minimal additions and inputs needed 
  
 Make sure that this follows the Material design principles and the principles that were provided. This should be a website that stands out. If extra colors are needed, add them, however, they should completement the colors already provided.
 
+Please ensure that the form is styled. 
 
 `;
 
