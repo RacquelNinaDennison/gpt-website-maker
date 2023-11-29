@@ -1,11 +1,19 @@
 import Head from "next/head";
 import styles from "@/styles/main.module.scss";
+import { useQuery } from "@tanstack/react-query";
 import { MouseEvent } from "react";
+import axios, { AxiosResponse } from "axios";
 
 export default function Home() {
+	const { data, isSuccess } = useQuery({
+		queryKey: [`gptResponse`],
+		queryFn: async () => {
+			return await axios.post(`/api/gptGenerator`);
+		},
+	});
 	const submitForm = (event: MouseEvent<HTMLElement>) => {
 		event.preventDefault();
-		alert("form submitted");
+		console.log(data);
 	};
 	return (
 		<>

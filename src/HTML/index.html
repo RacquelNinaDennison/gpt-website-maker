@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Blog</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAEED1;
+            color: #5F6F52;
+        }
+        .navbar {
+            background-color: #5F6F52;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: #FAEED1;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .navbar a:hover {
+            border: 2px solid white;
+        }
+        .hero {
+            display: flex;
+            padding: 50px;
+            align-items: center;
+        }
+        .hero-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .hero-text p {
+            font-size: 20px;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+        }
+        .about {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .about p {
+            font-size: 18px;
+        }
+        .products {
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .card {
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            width: 200px;
+            margin: 10px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        .card p {
+            margin: 15px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5F6F52;
+            color: #FAEED1;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #4b5a46;
+        }
+        .contact {
+            display: flex;
+            padding: 50px;
+            align-items: center;
+        }
+        .contact-text {
+            flex: 1;
+        }
+        .contact-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .contact-form {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .contact-form form input,
+        .contact-form form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .contact-form form input:focus,
+        .contact-form form textarea:focus {
+            outline: none;
+            border: 2px solid #5F6F52;
+            box-shadow: 0 0 5px #5F6F52;
+        }
+        .contact-image img {
+            max-width: 100%;
+            border-radius: 20px;
+        }
+        .footer {
+            background-color: #5F6F52;
+            padding: 30px 50px;
+            text-align: center;
+        }
+        .footer a {
+            color: #FAEED1;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#store">Store</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Nature Blog</h1>
+            <p>Nature revealed.</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://source.unsplash.com/random/400x300/?nature" alt="Nature">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        </p>
+    </section>
+
+    <section class="products" id="store">
+        <!-- Repeat the .card element as necessary for additional products -->
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="https://source.unsplash.com/random/200x200/?product" alt="Product 1">
+            <p>$49.99</p>
+            <a href="#store" class="button">Go to store</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="https://source.unsplash.com/random/200x200/?product" alt="Product 2">
+            <p>$59.99</p>
+            <a href="#store" class="button">Go to store</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="https://source.unsplash.com/random/200x200/?product" alt="Product 3">
+            <p>$39.99</p>
+            <a href="#store" class="button">Go to store</a>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="https://source.unsplash.com/random/200x200/?product" alt="Product 4">
+            <p>$29.99</p>
+            <a href="#store" class="button">Go to store</a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-text">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required rows="4"></textarea>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+        <div class="contact-image">
+            <img src="https://source.unsplash.com/random/400x300/?contact" alt="Contact">
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+    </footer>
+</body>
+</html>
