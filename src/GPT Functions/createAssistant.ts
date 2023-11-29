@@ -1,10 +1,7 @@
 import OpenAI from "openai";
-import dotenv from "dotenv";
 import { writeFileSync } from "fs";
 import { join } from "path";
 import userDescriptionText from "./form";
-
-dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.API_KEY });
 
