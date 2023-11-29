@@ -35,6 +35,7 @@ export const createAssistant = async () => {
 				thread.id,
 				run.id
 			);
+		// add a chill time
 		if (runMessages.status == "completed") {
 			console.log("Completed");
 			break;

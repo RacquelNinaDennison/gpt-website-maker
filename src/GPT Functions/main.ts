@@ -1,7 +1,7 @@
 import { createAssistant } from "./createAssistant";
 import { extractHtmlFromAssistantAndWriteToFile } from "./extractHtml";
 import simpleGit, { SimpleGit } from "simple-git";
-
+// this needs to be changed
 const repoPath =
 	"/Users/racqueldennison/Documents/elucidate/GPT Stuff/automated_stuff/website_maker";
 const git: SimpleGit = simpleGit(repoPath);
