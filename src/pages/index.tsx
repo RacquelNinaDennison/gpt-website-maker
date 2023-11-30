@@ -3,15 +3,16 @@ import axios from "axios";
 import Head from "next/head";
 import styles from "@/styles/main.module.scss";
 import { useMutation } from "@tanstack/react-query";
-import { Shorten } from "../types/apiShorten";
 import {
 	gptGeneratorResponse,
 	gptGeneratorRequest,
 } from "../types/gptGeneratorTypes";
+import Loader from "@/Components/loader";
 
 export default function Home() {
 	const [url, setUrl] = useState("");
 	const [urlGenerated, setUrlGenerated] = useState(false);
+	const [isLoading, setIsLoading] = useState(false); // Initialize isLoading to false
 
 	useEffect(() => {
 		const savedUrl = localStorage.getItem("url");
@@ -27,19 +28,26 @@ export default function Home() {
 		}
 	}, [url, urlGenerated]);
 
-	const createdLogistic = useMutation({
+	const createTemplate = useMutation({
 		mutationFn: async (
 			data: gptGeneratorRequest
 		): Promise<gptGeneratorResponse> => {
-			const response = await axios.post(
-				"/api/gptGenerator",
-				data
-			);
-			return response.data;
+			setIsLoading(true); // Set loading state to true when mutation starts
+			try {
+				const response = await axios.post(
+					"/api/gptGenerator",
+					data
+				);
+				return response.data;
+			} catch (error) {
+				console.error("Error in mutation: ", error);
+				throw error;
+			} finally {
+				setIsLoading(false); // Set loading state to false after mutation ends
+			}
 		},
-		onMutate: () => {},
 		onError: (err: Error) => {
-			console.log(err);
+			console.error("Error: ", err);
 		},
 		onSuccess: (data) => {
 			setUrl(data.data);
@@ -51,18 +59,20 @@ export default function Home() {
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
-		createdLogistic.mutate({
+		createTemplate.mutate({
 			data: { username: "racquel" },
 		});
 	};
+
 	const goBack = async (
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
 		setUrlGenerated(false);
 		setUrl("");
-		localStorage.setItem("url", "");
+		localStorage.removeItem("url");
 	};
+
 	return (
 		<>
 			<Head>
@@ -86,7 +96,12 @@ export default function Home() {
 				/>
 			</Head>
 			<main>
-				{!urlGenerated ? (
+				{isLoading ? (
+					<div className={styles.container}>
+						<h1>Loading Webpage</h1>
+						<Loader />
+					</div>
+				) : !urlGenerated ? (
 					<div className={styles.container}>
 						<form>
 							<p>Website Maker</p>
@@ -114,26 +129,28 @@ export default function Home() {
 							</button>
 						</form>
 						<div className={styles.drops}>
-							<div
-								className={`${styles.drop} ${styles.drop1}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop2}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop3}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop4}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop5}`}
-							></div>
+							<div className={styles.drops}>
+								<div
+									className={`${styles.drop} ${styles.drop1}`}
+								></div>
+								<div
+									className={`${styles.drop} ${styles.drop2}`}
+								></div>
+								<div
+									className={`${styles.drop} ${styles.drop3}`}
+								></div>
+								<div
+									className={`${styles.drop} ${styles.drop4}`}
+								></div>
+								<div
+									className={`${styles.drop} ${styles.drop5}`}
+								></div>
+							</div>
 						</div>
 					</div>
 				) : (
 					<div
-						className={`${styles.container} ${styles.conatiner1}`}
+						className={`${styles.container} ${styles.container1}`}
 					>
 						<div className={styles.blur}>
 							<p>Hosted Webpage</p>
@@ -141,6 +158,7 @@ export default function Home() {
 								className={styles.url}
 								href={url}
 								target='_blank'
+								rel='noopener noreferrer'
 							>
 								{url}
 							</a>
@@ -152,23 +170,8 @@ export default function Home() {
 								Back
 							</button>
 						</div>
-
 						<div className={styles.drops}>
-							<div
-								className={`${styles.drop} ${styles.drop1}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop2}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop3}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop4}`}
-							></div>
-							<div
-								className={`${styles.drop} ${styles.drop5}`}
-							></div>
+							{/* ...drop divs... */}
 						</div>
 					</div>
 				)}
@@ -178,6 +181,7 @@ export default function Home() {
 					<a
 						href='https://shortenr.faisaljr.com/'
 						target='_blank'
+						rel='noopener noreferrer'
 					>
 						Powered by Shortenr
 					</a>
