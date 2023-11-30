@@ -1,7 +1,10 @@
-type gptGeneratorRequest ={
+export type gptGeneratorRequest = {
+	data: {
+		username: string;
+	};
+};
 
-}
-
-export type gptGeneratorResponse ={
-    success:boolean
-}
+export type gptGeneratorResponse = {
+	success: boolean;
+	data: string;
+};

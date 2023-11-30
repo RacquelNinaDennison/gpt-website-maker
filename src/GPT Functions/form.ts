@@ -1,7 +1,7 @@
-const storeType = "Nature blog";
+const storeType = "Dog blog";
 const storeDescription =
 	"https://www.faithful-to-nature.co.za/blog/ - I want you to develop a nature blog that has the exact same layout as this page. The color theme should be the same.";
-const mainColor = "5F6F52";
+const mainColor = "blue";
 const secondColor = "FAEED1";
 const mainHeading = "Nature blog";
 const subHeading = "Nature revealed";

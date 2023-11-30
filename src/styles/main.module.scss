@@ -5,6 +5,10 @@ $white: rgba(255, 255, 255, 0.3);
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
+	&1 {
+		display: flex;
+		justify-content: center;
+	}
 }
 
 .button {
@@ -23,6 +27,11 @@ $white: rgba(255, 255, 255, 0.3);
 	font-weight: 500;
 	transition: all 0.2s ease-in-out;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	&1 {
+		margin-top: 5em;
+		margin-left: 9em;
+		align-items: center;
+	}
 }
 
 .drop {
@@ -72,4 +81,27 @@ $white: rgba(255, 255, 255, 0.3);
 		left: 90px;
 		z-index: -1;
 	}
+}
+
+.url {
+	color: black;
+	padding: 10px;
+}
+
+.blur {
+	background: $white;
+	padding: 3em;
+	height: 500px;
+	width: 100vh;
+	border-radius: 20px;
+	border-left: 1px solid $white;
+	border-top: 1px solid $white;
+	backdrop-filter: blur(10px);
+	box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	position: relative;
+	transition: all 0.2s ease-in-out;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }

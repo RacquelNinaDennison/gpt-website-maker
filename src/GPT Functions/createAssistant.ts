@@ -1,14 +1,13 @@
 import OpenAI from "openai";
-import { writeFileSync } from "fs";
-import { join } from "path";
+import { extractHtmlFromAssistantAsAVariable } from "./extractHtml";
 import userDescriptionText from "./form";
 import dotenv from "dotenv";
+import sleep from "@/utils/utils";
 dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.API_KEY });
 
 export const createAssistant = async () => {
-	// Retrieve assistant
 	const myWebpageAssistant =
 		await openai.beta.assistants.retrieve(
 			"asst_FAafr8Epv5OiUu8DJwvZ5923"
@@ -16,12 +15,12 @@ export const createAssistant = async () => {
 
 	const thread = await openai.beta.threads.create();
 	console.log(userDescriptionText);
-	// adding the users messages to the thread
+
 	await openai.beta.threads.messages.create(thread.id, {
 		role: "user",
 		content: userDescriptionText,
 	});
-	// creating a thread to start an interaction
+
 	const run = await openai.beta.threads.runs.create(
 		thread.id,
 		{
@@ -35,20 +34,22 @@ export const createAssistant = async () => {
 				thread.id,
 				run.id
 			);
-		// add a chill time
+
 		if (runMessages.status == "completed") {
 			console.log("Completed");
 			break;
 		}
 		console.log("Waiting for the assistant");
+		sleep(3000);
 	}
 
 	const messages = await openai.beta.threads.messages.list(
 		thread.id
 	);
+	const message = messages.data[0].content[0];
+	console.log(message);
 
-	writeFileSync(
-		join(__dirname, "../assistantResponse.json"),
-		JSON.stringify(messages.data[0].content, null, 2)
-	);
+	const htmlFile =
+		extractHtmlFromAssistantAsAVariable(message);
+	return htmlFile;
 };
