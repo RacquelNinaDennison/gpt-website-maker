@@ -3,7 +3,7 @@ const Loader = () => {
 	return (
 		<>
 			<div className={styles.centered}>
-				<h1>Building webpage</h1>
+				<span className={styles.spanClass}></span>
 				<div className={styles.blob1}></div>
 				<div className={styles.blob2}></div>
 			</div>

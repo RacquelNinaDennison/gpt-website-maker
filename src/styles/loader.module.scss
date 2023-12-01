@@ -37,6 +37,7 @@
 	position: absolute;
 	background: #fff;
 	border-radius: 50%;
+
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -71,5 +72,40 @@
 	}
 	100% {
 		left: 80%;
+	}
+}
+
+.spanClass::before {
+	content: "Building website";
+	animation: animate infinite 20s;
+	padding-left: 10px;
+	position: absolute;
+	bottom: 20%;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	z-index: 1;
+	font-size: 2em;
+}
+
+@keyframes animate {
+	0% {
+		content: "Adding Styling";
+	}
+
+	20% {
+		content: "Building the Backend";
+	}
+
+	40% {
+		content: "Fixing the Front end";
+	}
+
+	60% {
+		content: "Getting coffee";
+	}
+
+	80% {
+		content: "Fixing bugs";
 	}
 }
