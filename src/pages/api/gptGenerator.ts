@@ -9,14 +9,14 @@ const handler = async (
 	res: NextApiResponse<gptGeneratorResponse>
 ) => {
 	const username = req.body.username;
-	const url = await run(username);
-	console.log("Found the url");
-	const urlShorten: AxiosResponse = await axios.post(
-		"https://shortenr-steel.vercel.app/api/shorten",
-		{ url: url }
-	);
-	const urlShort: Shorten = urlShorten.data;
-	res.json({ success: true, data: urlShort.shortUrl });
+	// const url = await run(username);
+	// console.log("Found the url");
+	// const urlShorten: AxiosResponse = await axios.post(
+	// 	"https://shortenr-steel.vercel.app/api/shorten",
+	// 	{ url: url }
+	// );
+	// const urlShort: Shorten = urlShorten.data;
+	res.json({ success: true, data: username });
 };
 
 export default handler;
