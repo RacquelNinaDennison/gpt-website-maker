@@ -171,7 +171,25 @@ export default function Home() {
 							</button>
 						</div>
 						<div className={styles.drops}>
-							{/* ...drop divs... */}
+							<div className={styles.drops}>
+								<div className={styles.drops}>
+									<div
+										className={`${styles.drop} ${styles.drop1}`}
+									></div>
+									<div
+										className={`${styles.drop} ${styles.drop2}`}
+									></div>
+									<div
+										className={`${styles.drop} ${styles.drop3}`}
+									></div>
+									<div
+										className={`${styles.drop} ${styles.drop4}`}
+									></div>
+									<div
+										className={`${styles.drop} ${styles.drop5}`}
+									></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				)}
