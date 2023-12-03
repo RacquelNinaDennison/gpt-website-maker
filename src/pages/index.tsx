@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "next/head";
 import styles from "@/styles/main.module.scss";
+import useWindowSize from "react-use/lib/useWindowSize";
 import { useMutation } from "@tanstack/react-query";
 import {
 	gptGeneratorResponse,
 	gptGeneratorRequest,
 } from "../types/gptGeneratorTypes";
 import Loader from "@/Components/loader";
+import Confetti from "react-confetti";
 
 export default function Home() {
 	const [url, setUrl] = useState("");
 	const [urlGenerated, setUrlGenerated] = useState(false);
 	const [isLoading, setIsLoading] = useState(false); // Initialize isLoading to false
+	const { width, height } = useWindowSize();
 
 	useEffect(() => {
 		const savedUrl = localStorage.getItem("url");
@@ -149,49 +152,52 @@ export default function Home() {
 						</div>
 					</div>
 				) : (
-					<div
-						className={`${styles.container} ${styles.container1}`}
-					>
-						<div className={styles.blur}>
-							<p>Hosted Webpage</p>
-							<a
-								className={styles.url}
-								href={url}
-								target='_blank'
-								rel='noopener noreferrer'
-							>
-								{url}
-							</a>
-							<button
-								title='backButton'
-								onClick={goBack}
-								className={`${styles.button} ${styles.button1}`}
-							>
-								Back
-							</button>
-						</div>
-						<div className={styles.drops}>
+					<>
+						<Confetti width={1500} height={800} />
+						<div
+							className={`${styles.container} ${styles.container1}`}
+						>
+							<div className={styles.blur}>
+								<p>Hosted Webpage</p>
+								<a
+									className={styles.url}
+									href={url}
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									{url}
+								</a>
+								<button
+									title='backButton'
+									onClick={goBack}
+									className={`${styles.button} ${styles.button1}`}
+								>
+									Back
+								</button>
+							</div>
 							<div className={styles.drops}>
 								<div className={styles.drops}>
-									<div
-										className={`${styles.drop} ${styles.drop1}`}
-									></div>
-									<div
-										className={`${styles.drop} ${styles.drop2}`}
-									></div>
-									<div
-										className={`${styles.drop} ${styles.drop3}`}
-									></div>
-									<div
-										className={`${styles.drop} ${styles.drop4}`}
-									></div>
-									<div
-										className={`${styles.drop} ${styles.drop5}`}
-									></div>
+									<div className={styles.drops}>
+										<div
+											className={`${styles.drop} ${styles.drop1}`}
+										></div>
+										<div
+											className={`${styles.drop} ${styles.drop2}`}
+										></div>
+										<div
+											className={`${styles.drop} ${styles.drop3}`}
+										></div>
+										<div
+											className={`${styles.drop} ${styles.drop4}`}
+										></div>
+										<div
+											className={`${styles.drop} ${styles.drop5}`}
+										></div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</>
 				)}
 			</main>
 			<footer>
