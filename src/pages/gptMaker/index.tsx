@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Head from "next/head";
 import styles from "@/styles/main.module.scss";
-import useWindowSize from "react-use/lib/useWindowSize";
 import { useMutation } from "@tanstack/react-query";
 import {
 	gptGeneratorResponse,
@@ -23,8 +21,10 @@ export default function Home() {
 		storeDescription: "",
 		mainHeading: "Reimagine greatness",
 		subHeading: "Greatness",
+		webpageType: "",
 	});
 	const [userName, setUserName] = useState("");
+
 	useEffect(() => {
 		const savedUrl = localStorage.getItem("url");
 		if (savedUrl) {
@@ -46,7 +46,6 @@ export default function Home() {
 			setIsLoading(true);
 			try {
 				console.log("Sending response");
-				console.log(data);
 				const response = await axios.post(
 					"/api/gptGenerator",
 					data
@@ -57,7 +56,7 @@ export default function Home() {
 				console.error("Response data:", error);
 				throw error;
 			} finally {
-				setIsLoading(false); // Set loading state to false after mutation ends
+				setIsLoading(false);
 			}
 		},
 		onError: (err: Error) => {
@@ -68,11 +67,12 @@ export default function Home() {
 			setUrlGenerated(true);
 		},
 	});
+
 	const onChangeHandler = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const { name, value } = e.target;
-		if (name == "userName") {
+		if (name === "userName") {
 			setUserName(value);
 		} else {
 			setGptPrompt((prevValue) => ({
@@ -81,6 +81,7 @@ export default function Home() {
 			}));
 		}
 	};
+
 	const submitForm = async (
 		event: React.MouseEvent<HTMLElement>
 	) => {
@@ -119,22 +120,70 @@ export default function Home() {
 								Fill in the details below to generate your
 								webpage
 							</p>
-							<input
-								type='text'
-								placeholder='Enter your name'
-								onChange={onChangeHandler}
-								name='userName'
-								value={userName}
-							/>
+							<div>
+								<p className={styles.formText}>
+									Choose the type of webpage
+								</p>
+								<label>
+									<input
+										className={styles.radio}
+										type='radio'
+										name='webpageType'
+										value='personal'
+										onChange={onChangeHandler}
+										checked={
+											gptPrompt.webpageType === "personal"
+										}
+									/>
+									Blog Post
+								</label>
+								<label>
+									<input
+										className={styles.radio}
+										type='radio'
+										name='webpageType'
+										value='business'
+										onChange={onChangeHandler}
+										checked={
+											gptPrompt.webpageType === "business"
+										}
+									/>
+									Business
+								</label>
+								<label>
+									<input
+										className={styles.radio}
+										type='radio'
+										name='webpageType'
+										value='portfolio'
+										onChange={onChangeHandler}
+										checked={
+											gptPrompt.webpageType === "portfolio"
+										}
+									/>
+									Portfolio
+								</label>
+							</div>
 							<br />
-							<input
-								type='text'
-								placeholder='Theme of webpage'
-								onChange={onChangeHandler}
-								name='theme'
-								value={gptPrompt.theme}
-							/>
-							<br />
+							<div className={styles.row1}>
+								<input
+									type='text'
+									placeholder='Enter your name'
+									onChange={onChangeHandler}
+									name='userName'
+									value={userName}
+									className={styles.inputTag}
+								/>
+								<br />
+								<input
+									type='text'
+									placeholder='Theme of webpage'
+									onChange={onChangeHandler}
+									name='theme'
+									value={gptPrompt.theme}
+								/>
+								<br />
+							</div>
 							<input
 								type='text'
 								placeholder='Describe your company a bit'
@@ -143,7 +192,6 @@ export default function Home() {
 								value={gptPrompt.storeDescription}
 							/>
 							<br />
-
 							<input
 								type='text'
 								placeholder='Name of the company'
@@ -167,8 +215,8 @@ export default function Home() {
 								value={gptPrompt.secondaryColor}
 								onChange={onChangeHandler}
 							/>
-
 							<br />
+
 							<button
 								title='submitForm'
 								onClick={submitForm}

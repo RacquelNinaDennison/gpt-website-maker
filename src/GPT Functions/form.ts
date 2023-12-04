@@ -4,7 +4,7 @@ export const generateGPTPrompt = (
 	input: gptPrompt
 ): string => {
 	const userDescriptionText = `
-Design a landing page for a ${input.theme}. Provide the HTML code and CSS code as per the description below. The code should all be in one file, using the style tag in the HTML file for the CSS. The main colour theme is #${input.mainColor} with accents of # ${input.secondaryColor}.
+Design a landing page for a ${input.theme}. The webpage should have a look and feel for a ${input.webpageType}. Provide the HTML code and CSS code as per the description below. The code should all be in one file, using the style tag in the HTML file for the CSS. The main colour theme is #${input.mainColor} with accents of # ${input.secondaryColor}.
  
 For any images that need to be added, please use the unsplash link to generate them. This will act as place holders and will make the webpage look nice. Also use CSS to size the images, they should not be too large. 
  

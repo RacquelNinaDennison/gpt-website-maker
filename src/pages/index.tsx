@@ -47,7 +47,8 @@ export default function Home() {
 						<button
 							title='submitForm'
 							onClick={nextPage}
-							className={styles.button}
+							className={`${styles.button}
+${styles.button2}`}
 						>
 							Start Making
 						</button>

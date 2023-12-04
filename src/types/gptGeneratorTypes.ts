@@ -18,4 +18,5 @@ export type gptPrompt = {
 	storeDescription: string;
 	mainHeading: string;
 	subHeading: string;
+	webpageType: string;
 };
