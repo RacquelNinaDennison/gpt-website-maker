@@ -11,6 +11,7 @@ interface BlogPostProps {
 		gptGeneratorRequest,
 		unknown
 	>;
+	selected: string;
 }
 
 export default BlogPostProps;

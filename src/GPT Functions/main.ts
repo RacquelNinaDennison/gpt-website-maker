@@ -3,7 +3,10 @@ import {
 	StorageSharedKeyCredential,
 } from "@azure/storage-blob";
 import { createAssistant } from "./createAssistant";
-import { gptPrompt } from "@/types/gptGeneratorTypes";
+import {
+	gptBlogPrompt,
+	gptPrompt,
+} from "@/types/gptGeneratorTypes";
 
 const runGit = async (
 	username: string,
@@ -55,7 +58,7 @@ const runGit = async (
 };
 
 export const run = async (
-	input: gptPrompt,
+	input: gptPrompt | gptBlogPrompt,
 	username: string
 ) => {
 	try {

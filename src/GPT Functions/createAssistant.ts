@@ -4,12 +4,14 @@ import { extractHtmlFromAssistantAsAVariable } from "./extractHtml";
 import dotenv from "dotenv";
 import sleep from "@/utils/utils";
 import { generateGPTPrompt } from "./form";
-import { gptPrompt } from "@/types/gptGeneratorTypes";
+import { gptBlogPrompt, gptPrompt } from "@/types/gptGeneratorTypes";
 dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.API_KEY });
 
-export const createAssistant = async (input: gptPrompt) => {
+export const createAssistant = async (
+	input: gptPrompt | gptBlogPrompt
+) => {
 	try {
 		const myWebpageAssistant =
 			await openai.beta.assistants.retrieve(

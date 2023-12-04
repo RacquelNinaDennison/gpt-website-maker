@@ -1,6 +1,6 @@
 export type gptGeneratorRequest = {
 	data: {
-		userData: gptPrompt;
+		userData: gptPrompt | gptBlogPrompt;
 		username: string;
 	};
 };
@@ -18,5 +18,18 @@ export type gptPrompt = {
 	storeDescription: string;
 	mainHeading: string;
 	subHeading: string;
-	webpageType: string;
+	webPageType: string;
+};
+
+export type gptBlogPrompt = {
+	nameOfCompany: string;
+	mainColor: string;
+	secondaryColor: string;
+	email: string;
+	blogDescription: string;
+	mainBlogHeading: string;
+	subHeading: string;
+	postType: string;
+	blogName: string;
+	webPageType: string;
 };

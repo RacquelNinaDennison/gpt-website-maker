@@ -2,18 +2,18 @@ import BlogPostProps from "@/interfaces/components";
 import styles from "@/styles/main.module.scss";
 import { useState } from "react";
 
-export const BlogPost: React.FC<BlogPostProps> = ({
-	createTemplate,
-}) => {
+export const BlogPost = (props: BlogPostProps) => {
 	const [gptPrompt, setGptPrompt] = useState({
 		nameOfCompany: "",
 		mainColor: "",
 		secondaryColor: "",
-		theme: "",
-		storeDescription: "",
-		mainHeading: "Reimagine greatness",
+		email: "",
+		blogDescription: "",
+		mainBlogHeading: "Reimagine greatness",
 		subHeading: "Greatness",
-		webpageType: "",
+		postType: "",
+		blogName: "",
+		webPageType: props.selected,
 	});
 	const [userName, setUserName] = useState("");
 	const onChangeHandler = (
@@ -35,7 +35,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 	) => {
 		event.preventDefault();
 
-		createTemplate.mutate({
+		props.createTemplate.mutate({
 			data: {
 				userData: gptPrompt,
 				username: userName,
@@ -58,8 +58,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 					type='email'
 					placeholder='Email Address'
 					onChange={onChangeHandler}
-					name='theme'
-					value={gptPrompt.theme}
+					name='email'
+					value={gptPrompt.email}
 				/>
 				<br />
 			</div>
@@ -68,8 +68,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 					type='text'
 					placeholder='Name of the blog'
 					onChange={onChangeHandler}
-					name='userName'
-					value={userName}
+					name='blogName'
+					value={gptPrompt.blogName}
 					className={styles.inputTag}
 				/>
 				<br />
@@ -77,8 +77,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 					type='text'
 					placeholder='Describe your blog a bit'
 					onChange={onChangeHandler}
-					name='theme'
-					value={gptPrompt.theme}
+					name='blogDescription'
+					value={gptPrompt.blogDescription}
 				/>
 				<br />
 			</div>
@@ -87,8 +87,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 				type='text'
 				placeholder='What types of posts do you write about'
 				onChange={onChangeHandler}
-				name='userName'
-				value={userName}
+				name='postType'
+				value={gptPrompt.postType}
 				className={styles.inputTag}
 			/>
 
@@ -99,8 +99,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 					type='text'
 					placeholder='Main color theme'
 					onChange={onChangeHandler}
-					name='userName'
-					value={userName}
+					name='mainColor'
+					value={gptPrompt.mainColor}
 					className={styles.inputTag}
 				/>
 				<br />
@@ -108,8 +108,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 					type='text'
 					placeholder='Second color choice'
 					onChange={onChangeHandler}
-					name='theme'
-					value={gptPrompt.theme}
+					name='secondaryColor'
+					value={gptPrompt.secondaryColor}
 				/>
 				<br />
 			</div>

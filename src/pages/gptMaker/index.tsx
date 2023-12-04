@@ -139,33 +139,20 @@ export default function Home() {
 										Market Place
 									</div>
 								</label>
-								<label className={styles.radLabel}>
-									<input
-										type='radio'
-										className={styles.radInput}
-										name='rad'
-										value='Portfolio'
-										checked={selectedOption === "Portfolio"}
-										onChange={handleRadioChange}
-									/>
-									<div className={styles.radDesign}></div>
-									<div className={styles.radText}>
-										Portfolio
-									</div>
-								</label>
 							</div>
 							<br />
 
 							{selectedOption === "Blog Post" && (
-								<BlogPost createTemplate={createTemplate} />
+								<BlogPost
+									createTemplate={createTemplate}
+									selected={selectedOption}
+								/>
 							)}
 							{selectedOption == "Market Place" && (
 								<MarketPlace
 									createTemplate={createTemplate}
+									selected={selectedOption}
 								/>
-							)}
-							{selectedOption == "Portfolio" && (
-								<BlogPost createTemplate={createTemplate} />
 							)}
 						</form>
 						<div className={styles.drops}>
