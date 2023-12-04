@@ -1,23 +1,3 @@
-.confetti {
-	position: absolute;
-	width: 10px;
-	height: 10px;
-	transform-origin: center bottom;
-	animation: fall 4s linear infinite;
-}
-
-.confetti.square {
-	clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
-}
-.confetti.triangle {
-	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-@keyframes fall {
-	to {
-		transform: translateY(100vh) rotate(720deg);
-	}
-}
 :root {
 	--max-width: 1100px;
 	--border-radius: 12px;
@@ -229,7 +209,12 @@ footer {
 	justify-content: center;
 	align-items: flex-end;
 	height: 40px;
-	background-color: black;
+	background: transparent;
+	border-left: 1px solid var(--whiteColor);
+	border-top: 1px solid var(--whiteColor);
+	box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+	position: relative;
+	transition: all 0.2s ease-in-out;
 }
 footer a {
 	z-index: 1;
@@ -237,10 +222,27 @@ footer a {
 	color: black;
 	opacity: 0.8;
 	font-size: 1rem;
-	margin-top: 40px;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-	color: white;
 }
 main {
 	min-height: calc(100vh - 40px);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: linear-gradient(
+		45deg,
+		#fc466b,
+		#3f5efb
+	);
+	border-radius: 10px;
+	border: 0.5px solid #ffffff;
 }

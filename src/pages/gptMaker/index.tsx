@@ -6,8 +6,10 @@ import {
 	gptGeneratorResponse,
 	gptGeneratorRequest,
 } from "@/types/gptGeneratorTypes";
-import Loader from "@/Components/loader";
+import Loader from "@/Components/Loader";
 import Confetti from "react-confetti";
+import { BlogPost } from "@/Components/BlogPost";
+import { MarketPlace } from "@/Components/MarketPlace";
 
 export default function Home() {
 	const [url, setUrl] = useState("");
@@ -24,6 +26,14 @@ export default function Home() {
 		webpageType: "",
 	});
 	const [userName, setUserName] = useState("");
+	const [selectedOption, setSelectedOption] = useState("");
+
+	const handleRadioChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setSelectedOption(e.target.value);
+		console.log(selectedOption);
+	};
 
 	useEffect(() => {
 		const savedUrl = localStorage.getItem("url");
@@ -68,33 +78,6 @@ export default function Home() {
 		},
 	});
 
-	const onChangeHandler = (
-		e: React.ChangeEvent<HTMLInputElement>
-	) => {
-		const { name, value } = e.target;
-		if (name === "userName") {
-			setUserName(value);
-		} else {
-			setGptPrompt((prevValue) => ({
-				...prevValue,
-				[name]: value,
-			}));
-		}
-	};
-
-	const submitForm = async (
-		event: React.MouseEvent<HTMLElement>
-	) => {
-		event.preventDefault();
-
-		createTemplate.mutate({
-			data: {
-				userData: gptPrompt,
-				username: userName,
-			},
-		});
-	};
-
 	const goBack = async (
 		event: React.MouseEvent<HTMLElement>
 	) => {
@@ -124,106 +107,66 @@ export default function Home() {
 								<p className={styles.formText}>
 									Choose the type of webpage
 								</p>
-								<label>
+							</div>
+							<div className={styles.radioContainer}>
+								<label className={styles.radLabel}>
 									<input
-										className={styles.radio}
 										type='radio'
-										name='webpageType'
-										value='personal'
-										onChange={onChangeHandler}
-										checked={
-											gptPrompt.webpageType === "personal"
-										}
+										className={styles.radInput}
+										name='rad'
+										value='Blog Post'
+										checked={selectedOption === "Blog Post"}
+										onChange={handleRadioChange}
 									/>
-									Blog Post
+									<div className={styles.radDesign}></div>
+									<div className={styles.radText}>
+										Blog Post
+									</div>
 								</label>
-								<label>
+								<label className={styles.radLabel}>
 									<input
-										className={styles.radio}
 										type='radio'
-										name='webpageType'
-										value='business'
-										onChange={onChangeHandler}
+										className={styles.radInput}
+										name='rad'
+										value='Market Place'
 										checked={
-											gptPrompt.webpageType === "business"
+											selectedOption === "Market Place"
 										}
+										onChange={handleRadioChange}
 									/>
-									Business
+									<div className={styles.radDesign}></div>
+									<div className={styles.radText}>
+										Market Place
+									</div>
 								</label>
-								<label>
+								<label className={styles.radLabel}>
 									<input
-										className={styles.radio}
 										type='radio'
-										name='webpageType'
-										value='portfolio'
-										onChange={onChangeHandler}
-										checked={
-											gptPrompt.webpageType === "portfolio"
-										}
+										className={styles.radInput}
+										name='rad'
+										value='Portfolio'
+										checked={selectedOption === "Portfolio"}
+										onChange={handleRadioChange}
 									/>
-									Portfolio
+									<div className={styles.radDesign}></div>
+									<div className={styles.radText}>
+										Portfolio
+									</div>
 								</label>
 							</div>
-							<br />
-							<div className={styles.row1}>
-								<input
-									type='text'
-									placeholder='Enter your name'
-									onChange={onChangeHandler}
-									name='userName'
-									value={userName}
-									className={styles.inputTag}
-								/>
-								<br />
-								<input
-									type='text'
-									placeholder='Theme of webpage'
-									onChange={onChangeHandler}
-									name='theme'
-									value={gptPrompt.theme}
-								/>
-								<br />
-							</div>
-							<input
-								type='text'
-								placeholder='Describe your company a bit'
-								onChange={onChangeHandler}
-								name='storeDescription'
-								value={gptPrompt.storeDescription}
-							/>
-							<br />
-							<input
-								type='text'
-								placeholder='Name of the company'
-								onChange={onChangeHandler}
-								name='nameOfCompany'
-								value={gptPrompt.nameOfCompany}
-							/>
-							<br />
-							<input
-								type='text'
-								placeholder='Main color choice '
-								onChange={onChangeHandler}
-								name='mainColor'
-								value={gptPrompt.mainColor}
-							/>
-							<br />
-							<input
-								type='text'
-								placeholder='Second main color choice'
-								name='secondaryColor'
-								value={gptPrompt.secondaryColor}
-								onChange={onChangeHandler}
-							/>
 							<br />
 
-							<button
-								title='submitForm'
-								onClick={submitForm}
-								className={styles.button}
-							>
-								Submit
-							</button>
+							{selectedOption === "Blog Post" && (
+								<BlogPost createTemplate={createTemplate} />
+							)}
+							{selectedOption == "Market Place" && (
+								<MarketPlace
+									createTemplate={createTemplate}
+								/>
+							)}
+							{selectedOption == "Portfolio" && (
+								<BlogPost createTemplate={createTemplate} />
+							)}
 						</form>
 						<div className={styles.drops}>
 							<div className={styles.drops}>
