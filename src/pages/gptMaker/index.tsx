@@ -10,12 +10,14 @@ import {
 import Confetti from "react-confetti";
 import { BlogPost } from "@/Components/BlogPost";
 import { Loader } from "../../Components/loader";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Home() {
 	const [url, setUrl] = useState("");
 	const [urlGenerated, setUrlGenerated] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("");
+	let apiTimeout: ReturnType<typeof setTimeout>;
 	const handleRadioChange = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
@@ -29,6 +31,7 @@ export default function Home() {
 			setUrl(savedUrl);
 			setUrlGenerated(true);
 		}
+		return () => clearTimeout(apiTimeout);
 	}, []);
 
 	useEffect(() => {
@@ -58,12 +61,19 @@ export default function Home() {
 			}
 		},
 		onMutate: () => {
-			// add the timeout
+			apiTimeout = setTimeout(() => {
+				toast.info(
+					"Request is taking longer than expected. The link and code will be emailed to you."
+				);
+				setUrlGenerated(false);
+			}, 10000);
 		},
 		onError: (err: Error) => {
+			clearTimeout(apiTimeout);
 			console.error("Error: ", err);
 		},
 		onSuccess: (data) => {
+			clearTimeout(apiTimeout);
 			setUrl(data.data);
 			setUrlGenerated(true);
 			console.log(isLoading);
@@ -81,6 +91,7 @@ export default function Home() {
 
 	return (
 		<>
+			<ToastContainer />
 			<main>
 				{isLoading ? (
 					<div className={styles.container}>

@@ -34,7 +34,7 @@ export default function Home() {
 					rel='stylesheet'
 				/>
 			</Head>
-			<main className={styles.main}>
+			<main>
 				<div className={styles.container}>
 					<form>
 						<h1 className={styles.text}>
