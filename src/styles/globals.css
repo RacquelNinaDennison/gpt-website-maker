@@ -89,6 +89,7 @@ body {
 	background: linear-gradient(45deg, #fc466b, #3f5efb);
 	height: 100vh;
 	font-family: "Montserrat", sans-serif;
+	overflow: hidden;
 }
 html,
 body {
@@ -227,7 +228,6 @@ footer a {
 main {
 	min-height: calc(100vh - 40px);
 }
-
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
 	width: 16px;

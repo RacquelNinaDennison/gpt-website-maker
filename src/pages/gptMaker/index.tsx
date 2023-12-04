@@ -15,19 +15,7 @@ export default function Home() {
 	const [url, setUrl] = useState("");
 	const [urlGenerated, setUrlGenerated] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const [gptPrompt, setGptPrompt] = useState({
-		nameOfCompany: "",
-		mainColor: "",
-		secondaryColor: "",
-		theme: "",
-		storeDescription: "",
-		mainHeading: "Reimagine greatness",
-		subHeading: "Greatness",
-		webpageType: "",
-	});
-	const [userName, setUserName] = useState("");
 	const [selectedOption, setSelectedOption] = useState("");
-
 	const handleRadioChange = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
