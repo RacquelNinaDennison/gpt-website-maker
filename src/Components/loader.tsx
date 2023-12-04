@@ -1,5 +1,5 @@
 import styles from "../styles/loader.module.scss";
-const Loader = () => {
+export const Loader = () => {
 	return (
 		<>
 			<div className={styles.centered}>
@@ -10,5 +10,3 @@ const Loader = () => {
 		</>
 	);
 };
-
-export default Loader;

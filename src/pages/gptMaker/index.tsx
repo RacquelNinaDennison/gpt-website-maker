@@ -9,7 +9,7 @@ import {
 
 import Confetti from "react-confetti";
 import { BlogPost } from "@/Components/BlogPost";
-import Loader from "../../Components/Loader";
+import { Loader } from "@/Components/Loader";
 
 export default function Home() {
 	const [url, setUrl] = useState("");
