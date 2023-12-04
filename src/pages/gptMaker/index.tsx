@@ -9,7 +9,7 @@ import {
 
 import Confetti from "react-confetti";
 import { BlogPost } from "@/Components/BlogPost";
-import { Loader } from "../../Components/Loader";
+import { Loader } from "../../Components/loader";
 
 export default function Home() {
 	const [url, setUrl] = useState("");
@@ -56,6 +56,9 @@ export default function Home() {
 			} finally {
 				setIsLoading(false);
 			}
+		},
+		onMutate: () => {
+			// add the timeout
 		},
 		onError: (err: Error) => {
 			console.error("Error: ", err);
