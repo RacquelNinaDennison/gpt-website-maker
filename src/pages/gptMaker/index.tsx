@@ -6,10 +6,9 @@ import {
 	gptGeneratorResponse,
 	gptGeneratorRequest,
 } from "@/types/gptGeneratorTypes";
-import Loader from "@/Components/Loader";
+import { Loader } from "@/Components/Loader";
 import Confetti from "react-confetti";
 import { BlogPost } from "@/Components/BlogPost";
-import { MarketPlace } from "@/Components/MarketPlace";
 
 export default function Home() {
 	const [url, setUrl] = useState("");
@@ -112,7 +111,7 @@ export default function Home() {
 										Blog Post
 									</div>
 								</label>
-								<label className={styles.radLabel}>
+								{/* <label className={styles.radLabel}>
 									<input
 										type='radio'
 										className={styles.radInput}
@@ -127,7 +126,7 @@ export default function Home() {
 									<div className={styles.radText}>
 										Market Place
 									</div>
-								</label>
+								</label> */}
 							</div>
 							<br />
 
@@ -137,12 +136,12 @@ export default function Home() {
 									selected={selectedOption}
 								/>
 							)}
-							{selectedOption == "Market Place" && (
+							{/* {selectedOption == "Market Place" && (
 								<MarketPlace
 									createTemplate={createTemplate}
 									selected={selectedOption}
 								/>
-							)}
+							)} */}
 						</form>
 						<div className={styles.drops}>
 							<div className={styles.drops}>
