@@ -13,7 +13,7 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 		storeDescription: "",
 		mainHeading: "Reimagine greatness",
 		subHeading: "Greatness",
-		webpageType: "",
+		webPageType: "",
 	});
 	const [userName, setUserName] = useState("");
 	const onChangeHandler = (
