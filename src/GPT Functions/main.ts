@@ -3,6 +3,7 @@ import {
 	StorageSharedKeyCredential,
 } from "@azure/storage-blob";
 import { createAssistant } from "./createAssistant";
+import { gptPrompt } from "@/types/gptGeneratorTypes";
 
 const runGit = async (
 	username: string,
@@ -53,14 +54,17 @@ const runGit = async (
 	}
 };
 
-export const run = async (username: string) => {
+export const run = async (
+	input: gptPrompt,
+	username: string
+) => {
 	try {
-		const contentHtml = await createAssistant();
+		const contentHtml = await createAssistant(input);
 		const url = await runGit(username, contentHtml);
 		return url;
 	} catch (error) {
 		console.error("Error in run:", error);
-		// Handle the error or return an error message as needed.
+
 		throw error;
 	}
 };

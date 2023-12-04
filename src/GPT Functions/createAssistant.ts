@@ -1,13 +1,15 @@
 import OpenAI from "openai";
 import { extractHtmlFromAssistantAsAVariable } from "./extractHtml";
-import userDescriptionText from "./form";
+
 import dotenv from "dotenv";
 import sleep from "@/utils/utils";
+import { generateGPTPrompt } from "./form";
+import { gptPrompt } from "@/types/gptGeneratorTypes";
 dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.API_KEY });
 
-export const createAssistant = async () => {
+export const createAssistant = async (input: gptPrompt) => {
 	try {
 		const myWebpageAssistant =
 			await openai.beta.assistants.retrieve(
@@ -15,11 +17,10 @@ export const createAssistant = async () => {
 			);
 
 		const thread = await openai.beta.threads.create();
-		console.log(userDescriptionText);
-
+		const userText = generateGPTPrompt(input);
 		await openai.beta.threads.messages.create(thread.id, {
 			role: "user",
-			content: userDescriptionText,
+			content: userText,
 		});
 
 		const run = await openai.beta.threads.runs.create(

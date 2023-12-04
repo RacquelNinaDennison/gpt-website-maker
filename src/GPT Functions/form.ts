@@ -1,24 +1,24 @@
-const storeType = "Dog blog";
-const storeDescription =
-	"https://www.faithful-to-nature.co.za/blog/ - I want you to develop a nature blog that has the exact same layout as this page. The color theme should be the same.";
-const mainColor = "blue";
-const secondColor = "FAEED1";
-const mainHeading = "Nature blog";
-const subHeading = "Nature revealed";
-const userDescriptionText = `
-Design a landing page for a ${storeType}. Provide the HTML code and CSS code as per the description below. The code should all be in one file, using the style tag in the HTML file for the CSS. The main colour theme is #${mainColor} with accents of # ${secondColor}.
+import { gptPrompt } from "@/types/gptGeneratorTypes";
+
+export const generateGPTPrompt = (
+	input: gptPrompt
+): string => {
+	const userDescriptionText = `
+Design a landing page for a ${input.theme}. Provide the HTML code and CSS code as per the description below. The code should all be in one file, using the style tag in the HTML file for the CSS. The main colour theme is #${input.mainColor} with accents of # ${input.secondaryColor}.
  
 For any images that need to be added, please use the unsplash link to generate them. This will act as place holders and will make the webpage look nice. Also use CSS to size the images, they should not be too large. 
  
 Below is a bit of context of the site. This should better guide you as to how the company landing page should be designed
  
-${storeDescription}
+${input.storeDescription}. 
+
+
  
 The landing page should have the following on it. There should be a distinct divide between the sections on the webpage.
  
 There should be a nav bar at the top of the page with a background colour of the main theme, the links should be a contrasting colour that will make the text stand out. Include links to ABOUT US, CONTACT US and STORE. When you hover over the links, make a circular boarder appear around them. The boarder should be white and should have a soft radius. The boarder radius should not be too circular, instead these should be a button like style with rounded edges.
  
-The hero section should have a main heading that says ${mainHeading}. With a description underneath that says, ${subHeading}. This should be placed on the right hand side with some margins and paddings around it. There should be an image of the theme or the type of company the webpage is being designed for to the left hand side.  There should be spacing between the main heading and the image. The heading should be large with the description being of a smaller font to the heading.
+The hero section should have a main heading that says ${input.mainHeading}. With a description underneath that says, ${input.subHeading}. This should be placed on the right hand side with some margins and paddings around it. There should be an image of the theme or the type of company the webpage is being designed for to the left hand side.  There should be spacing between the main heading and the image. The heading should be large with the description being of a smaller font to the heading.
  
 In the section below, this will be a summary section of the business. This should say about us in large text. The text should be placed in the middle of this section. Underneath the text should be lorem Isom place holders just to fill up the space. There should be 3 lines filling up the description section.
  
@@ -35,5 +35,5 @@ Make sure that this follows the Material design principles and the principles th
 Please ensure that the form is styled. 
 
 `;
-
-export default userDescriptionText;
+	return userDescriptionText;
+};

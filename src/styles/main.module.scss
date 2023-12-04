@@ -56,30 +56,30 @@ $white: rgba(255, 255, 255, 0.3);
 	&2 {
 		height: 80px;
 		width: 80px;
-		bottom: -30px;
-		right: -10px;
+		bottom: -10px;
+		right: -30px;
 	}
 
 	&3 {
-		height: 100px;
-		width: 100px;
+		height: 80px;
+		width: 80px;
 		bottom: 120px;
 		right: -50px;
 		z-index: -1;
 	}
 
 	&4 {
-		height: 120px;
-		width: 120px;
-		top: -60px;
-		right: -60px;
+		height: 80px;
+		width: 80px;
+		top: -30px;
+		right: -30px;
 	}
 
 	&5 {
 		height: 60px;
 		width: 60px;
 		bottom: 170px;
-		left: 90px;
+		left: 50px;
 		z-index: -1;
 	}
 }
@@ -105,4 +105,28 @@ $white: rgba(255, 255, 255, 0.3);
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+}
+
+.main {
+	background-color: black;
+
+	&.text {
+		color: white;
+	}
+}
+
+.text {
+	color: white;
+	margin-top: 10px;
+}
+
+.text1 {
+	@extend .text;
+	margin-top: 20px;
+}
+.formText {
+	font-size: 20px;
+	margin: 0;
+	padding: 0px;
+	margin-bottom: 30px;
 }

@@ -1,79 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Head from "next/head";
 import styles from "@/styles/main.module.scss";
-import useWindowSize from "react-use/lib/useWindowSize";
-import { useMutation } from "@tanstack/react-query";
-import {
-	gptGeneratorResponse,
-	gptGeneratorRequest,
-} from "../types/gptGeneratorTypes";
-import Loader from "@/Components/loader";
-import Confetti from "react-confetti";
-
+import { useRouter } from "next/navigation";
 export default function Home() {
-	const [url, setUrl] = useState("");
-	const [urlGenerated, setUrlGenerated] = useState(false);
-	const [isLoading, setIsLoading] = useState(false); // Initialize isLoading to false
-	const { width, height } = useWindowSize();
+	const router = useRouter();
 
-	useEffect(() => {
-		const savedUrl = localStorage.getItem("url");
-		if (savedUrl) {
-			setUrl(savedUrl);
-			setUrlGenerated(true);
-		}
-	}, []);
-
-	useEffect(() => {
-		if (urlGenerated) {
-			localStorage.setItem("url", url);
-		}
-	}, [url, urlGenerated]);
-
-	const createTemplate = useMutation({
-		mutationFn: async (
-			data: gptGeneratorRequest
-		): Promise<gptGeneratorResponse> => {
-			setIsLoading(true); // Set loading state to true when mutation starts
-			try {
-				const response = await axios.post(
-					"/api/gptGenerator",
-					data
-				);
-				return response.data;
-			} catch (error) {
-				console.error("Error in mutation: ", error);
-				throw error;
-			} finally {
-				setIsLoading(false); // Set loading state to false after mutation ends
-			}
-		},
-		onError: (err: Error) => {
-			console.error("Error: ", err);
-		},
-		onSuccess: (data) => {
-			setUrl(data.data);
-			setUrlGenerated(true);
-		},
-	});
-
-	const submitForm = async (
+	const nextPage = async (
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
-		createTemplate.mutate({
-			data: { username: "racquel" },
-		});
-	};
-
-	const goBack = async (
-		event: React.MouseEvent<HTMLElement>
-	) => {
-		event.preventDefault();
-		setUrlGenerated(false);
-		setUrl("");
-		localStorage.removeItem("url");
+		router.push("/gptMaker");
 	};
 
 	return (
@@ -98,107 +34,44 @@ export default function Home() {
 					rel='stylesheet'
 				/>
 			</Head>
-			<main>
-				{isLoading ? (
-					<div className={styles.container}>
-						<h1>Loading Webpage</h1>
-						<Loader />
-					</div>
-				) : !urlGenerated ? (
-					<div className={styles.container}>
-						<form>
-							<p>Website Maker</p>
-							<input
-								type='text'
-								placeholder='Placeholder text one'
-							/>
-							<br />
-							<input
-								type='text'
-								placeholder='Placeholder text two'
-							/>
-							<br />
-							<input
-								type='text'
-								placeholder='Placeholder text three'
-							/>
-							<br />
-							<button
-								title='submitForm'
-								onClick={submitForm}
-								className={styles.button}
-							>
-								Submit
-							</button>
-						</form>
-						<div className={styles.drops}>
-							<div className={styles.drops}>
-								<div
-									className={`${styles.drop} ${styles.drop1}`}
-								></div>
-								<div
-									className={`${styles.drop} ${styles.drop2}`}
-								></div>
-								<div
-									className={`${styles.drop} ${styles.drop3}`}
-								></div>
-								<div
-									className={`${styles.drop} ${styles.drop4}`}
-								></div>
-								<div
-									className={`${styles.drop} ${styles.drop5}`}
-								></div>
-							</div>
-						</div>
-					</div>
-				) : (
-					<>
-						<Confetti width={1500} height={800} />
-						<div
-							className={`${styles.container} ${styles.container1}`}
+			<main className={styles.main}>
+				<div className={styles.container}>
+					<form>
+						<h1 className={styles.text}>
+							Welcome to the website generator
+						</h1>
+						<p className={styles.text1}>
+							Creating websites powered by GPT
+						</p>
+
+						<button
+							title='submitForm'
+							onClick={nextPage}
+							className={styles.button}
 						>
-							<div className={styles.blur}>
-								<p>Hosted Webpage</p>
-								<a
-									className={styles.url}
-									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
-								>
-									{url}
-								</a>
-								<button
-									title='backButton'
-									onClick={goBack}
-									className={`${styles.button} ${styles.button1}`}
-								>
-									Back
-								</button>
-							</div>
-							<div className={styles.drops}>
-								<div className={styles.drops}>
-									<div className={styles.drops}>
-										<div
-											className={`${styles.drop} ${styles.drop1}`}
-										></div>
-										<div
-											className={`${styles.drop} ${styles.drop2}`}
-										></div>
-										<div
-											className={`${styles.drop} ${styles.drop3}`}
-										></div>
-										<div
-											className={`${styles.drop} ${styles.drop4}`}
-										></div>
-										<div
-											className={`${styles.drop} ${styles.drop5}`}
-										></div>
-									</div>
-								</div>
-							</div>
+							Start Making
+						</button>
+					</form>
+					<div className={styles.drops}>
+						<div className={styles.drops}>
+							<div
+								className={`${styles.drop} ${styles.drop1}`}
+							></div>
+							<div
+								className={`${styles.drop} ${styles.drop2}`}
+							></div>
+							<div
+								className={`${styles.drop} ${styles.drop3}`}
+							></div>
+							<div
+								className={`${styles.drop} ${styles.drop4}`}
+							></div>
+							<div
+								className={`${styles.drop} ${styles.drop5}`}
+							></div>
 						</div>
-					</>
-				)}
+					</div>
+				</div>
 			</main>
 			<footer>
 				<div>
