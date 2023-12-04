@@ -66,7 +66,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 			<div className={styles.row1}>
 				<input
 					type='text'
-					placeholder='Name of the company'
+					placeholder='Name of the blog'
 					onChange={onChangeHandler}
 					name='userName'
 					value={userName}
@@ -75,32 +75,25 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 				<br />
 				<input
 					type='text'
-					placeholder='Describe your company a bit'
+					placeholder='Describe your blog a bit'
 					onChange={onChangeHandler}
 					name='theme'
 					value={gptPrompt.theme}
 				/>
 				<br />
 			</div>
-			<div className={styles.row1}>
-				<input
-					type='text'
-					placeholder='Company Slogan'
-					onChange={onChangeHandler}
-					name='userName'
-					value={userName}
-					className={styles.inputTag}
-				/>
-				<br />
-				<input
-					type='text'
-					placeholder='Company Vision'
-					onChange={onChangeHandler}
-					name='theme'
-					value={gptPrompt.theme}
-				/>
-				<br />
-			</div>
+
+			<input
+				type='text'
+				placeholder='What types of posts do you write about'
+				onChange={onChangeHandler}
+				name='userName'
+				value={userName}
+				className={styles.inputTag}
+			/>
+
+			<br />
+
 			<div className={styles.row1}>
 				<input
 					type='text'

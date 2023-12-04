@@ -6,7 +6,7 @@ import {
 	gptGeneratorResponse,
 	gptGeneratorRequest,
 } from "@/types/gptGeneratorTypes";
-import Loader from "../../Components/Loader";
+import Loader from "@/Components/Loader";
 import Confetti from "react-confetti";
 import { BlogPost } from "@/Components/BlogPost";
 import { MarketPlace } from "@/Components/MarketPlace";
