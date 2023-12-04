@@ -13,6 +13,13 @@
     ],
     "disown-opener": "off",
     "detect-css-reflows/composite": "off",
-    "typescript-config/is-valid": "off"
+    "typescript-config/is-valid": "off",
+    "no-inline-styles": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
   }
 }

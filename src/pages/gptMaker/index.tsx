@@ -12,9 +12,10 @@ import { BlogPost } from "@/Components/BlogPost";
 import { Loader } from "../../Components/loader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MarketPlace } from "@/Components/MarketPlace";
 export default function Home() {
 	const [url, setUrl] = useState("");
-	const [urlGenerated, setUrlGenerated] = useState(false);
+	const [urlGenerated, setUrlGenerated] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("");
 	let apiTimeout: ReturnType<typeof setTimeout>;
@@ -126,7 +127,7 @@ export default function Home() {
 										Blog Post
 									</div>
 								</label>
-								{/* <label className={styles.radLabel}>
+								<label className={styles.radLabel}>
 									<input
 										type='radio'
 										className={styles.radInput}
@@ -141,7 +142,7 @@ export default function Home() {
 									<div className={styles.radText}>
 										Market Place
 									</div>
-								</label> */}
+								</label>
 							</div>
 							<br />
 
@@ -151,12 +152,12 @@ export default function Home() {
 									selected={selectedOption}
 								/>
 							)}
-							{/* {selectedOption == "Market Place" && (
+							{selectedOption == "Market Place" && (
 								<MarketPlace
 									createTemplate={createTemplate}
 									selected={selectedOption}
 								/>
-							)} */}
+							)}
 						</form>
 						<div className={styles.drops}>
 							<div className={styles.drops}>
@@ -180,14 +181,14 @@ export default function Home() {
 					</div>
 				) : (
 					<>
-						<Confetti width={1500} height={800} />
+						<Confetti width={3000} height={1000} />
 						<div
 							className={`${styles.container} ${styles.container1}`}
 						>
 							<div className={styles.blur}>
 								<p>Hosted Webpage</p>
 								<a
-									className={styles.url}
+									className={`${styles.url} ${styles.radText}`}
 									href={url}
 									target='_blank'
 									rel='noopener noreferrer'
@@ -195,7 +196,7 @@ export default function Home() {
 									{url}
 								</a>
 								<button
-									title='backButton'
+									title=''
 									onClick={goBack}
 									className={`${styles.button} ${styles.button1}`}
 								>

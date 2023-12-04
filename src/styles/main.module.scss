@@ -13,6 +13,7 @@ $white: rgba(255, 255, 255, 0.3);
 	width: 50%;
 	padding: 1em;
 	margin-bottom: 2em;
+	margin-top: 10px;
 	border: none;
 	border-left: 1px solid $white;
 	border-top: 1px solid $white;
@@ -144,7 +145,6 @@ $white: rgba(255, 255, 255, 0.3);
 
 .radLabel {
 	display: flex;
-
 	border-radius: 100px;
 	padding: 14px 16px;
 	cursor: pointer;
@@ -163,6 +163,7 @@ $white: rgba(255, 255, 255, 0.3);
 	width: 1px;
 	height: 1px;
 	opacity: 0;
+	visibility: hidden;
 }
 
 .radDesign {
@@ -190,7 +191,7 @@ $white: rgba(255, 255, 255, 0.3);
 
 .radText {
 	color: black;
-	margin-left: 14px;
+	margin-left: 10px;
 	letter-spacing: 3px;
 	text-transform: uppercase;
 	font-size: 18px;
@@ -208,4 +209,29 @@ $white: rgba(255, 255, 255, 0.3);
 	place-content: center;
 	margin: 0;
 	box-sizing: border-box;
+}
+
+.colorInput {
+	// Remove the duplicate properties and adjust as follows
+	width: 30px !important; // Set the desired width
+	height: 30px !important;
+	height: 22px; // Set the desired height
+	border-radius: 50%; // This will make it round
+	border: 2px solid transparent; // Optional: sets a border, you can use $white if you want it to match other styles
+	-webkit-appearance: none; // Removes the default styling
+	outline: none;
+	cursor: pointer;
+	position: relative; // Adjust as needed, you may not need absolute positioning
+	background-color: transparent; // Makes the input's background transparent
+	z-index: 1; // Ensure this is above other elements if using absolute positioning
+	margin-left: 10px;
+	margin-top: -3px;
+	&::-webkit-color-swatch-wrapper {
+		padding: 0;
+	}
+
+	&::-webkit-color-swatch {
+		border: none; // Removes the default border of the color swatch
+		border-radius: 50%; // Makes the color swatch round
+	}
 }

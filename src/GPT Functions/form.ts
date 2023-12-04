@@ -38,7 +38,7 @@ export const generateGPTPrompt = (
 	
 	Lastly, make sure that the entire webpage is responsive. It should render well on devices of all sizes, from large desktop monitors to small mobile screens. Use media queries in CSS to adjust layout elements and font sizes according to the screen size.
 	
-	End of description for the blog post landing page layout. The main theme of the webpage is ${userInput.postType}
+	End of description for the blog post landing page layout. The main theme of the webpage is ${userInput.postType}. For all of the images, add a rounded boarder to them and a shadow. 
 
 	`;
 	}

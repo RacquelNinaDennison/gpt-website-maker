@@ -5,8 +5,8 @@ import { useState } from "react";
 export const BlogPost = (props: BlogPostProps) => {
 	const [gptPrompt, setGptPrompt] = useState({
 		nameOfCompany: "",
-		mainColor: "",
-		secondaryColor: "",
+		mainColor: "#ffffff", // Default color for main color
+		secondaryColor: "#ffffff", // Default color for secondary color
 		email: "",
 		blogDescription: "",
 		mainBlogHeading: "Reimagine greatness",
@@ -16,6 +16,7 @@ export const BlogPost = (props: BlogPostProps) => {
 		webPageType: props.selected,
 	});
 	const [userName, setUserName] = useState("");
+
 	const onChangeHandler = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
@@ -34,7 +35,6 @@ export const BlogPost = (props: BlogPostProps) => {
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
-
 		props.createTemplate.mutate({
 			data: {
 				userData: gptPrompt,
@@ -42,6 +42,7 @@ export const BlogPost = (props: BlogPostProps) => {
 			},
 		});
 	};
+
 	return (
 		<>
 			<div className={styles.row1}>
@@ -60,6 +61,7 @@ export const BlogPost = (props: BlogPostProps) => {
 					onChange={onChangeHandler}
 					name='email'
 					value={gptPrompt.email}
+					className={styles.inputTag}
 				/>
 				<br />
 			</div>
@@ -79,6 +81,7 @@ export const BlogPost = (props: BlogPostProps) => {
 					onChange={onChangeHandler}
 					name='blogDescription'
 					value={gptPrompt.blogDescription}
+					className={styles.inputTag}
 				/>
 				<br />
 			</div>
@@ -94,24 +97,29 @@ export const BlogPost = (props: BlogPostProps) => {
 
 			<br />
 
-			<div className={styles.row1}>
-				<input
-					type='text'
-					placeholder='Main color theme'
-					onChange={onChangeHandler}
-					name='mainColor'
-					value={gptPrompt.mainColor}
-					className={styles.inputTag}
-				/>
-				<br />
-				<input
-					type='text'
-					placeholder='Second color choice'
-					onChange={onChangeHandler}
-					name='secondaryColor'
-					value={gptPrompt.secondaryColor}
-				/>
-				<br />
+			<div className={styles.radioContainer}>
+				<label className={styles.radLabel}>
+					<div className={styles.radText}>Main Color</div>
+					<input
+						type='color'
+						className={styles.colorInput}
+						name='mainColor'
+						value={gptPrompt.mainColor}
+						onChange={onChangeHandler}
+					/>
+				</label>
+				<label className={styles.radLabel}>
+					<div className={styles.radText}>
+						Secondary Color
+					</div>
+					<input
+						type='color'
+						className={styles.colorInput}
+						name='secondaryColor'
+						value={gptPrompt.secondaryColor}
+						onChange={onChangeHandler}
+					/>
+				</label>
 			</div>
 
 			<button

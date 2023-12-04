@@ -19,6 +19,7 @@ export type gptPrompt = {
 	mainHeading: string;
 	subHeading: string;
 	webPageType: string;
+	email: string;
 };
 
 export type gptBlogPrompt = {
