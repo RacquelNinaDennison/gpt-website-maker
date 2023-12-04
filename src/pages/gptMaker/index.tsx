@@ -75,6 +75,7 @@ export default function Home() {
 		onSuccess: (data) => {
 			setUrl(data.data);
 			setUrlGenerated(true);
+			console.log(isLoading);
 		},
 	});
 
