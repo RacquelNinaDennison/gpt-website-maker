@@ -5,8 +5,8 @@ import { useState } from "react";
 export const BlogPost = (props: BlogPostProps) => {
 	const [gptPrompt, setGptPrompt] = useState({
 		nameOfCompany: "",
-		mainColor: "#ffffff", // Default color for main color
-		secondaryColor: "#ffffff", // Default color for secondary color
+		mainColor: "#ffffff",
+		secondaryColor: "#ffffff",
 		email: "",
 		blogDescription: "",
 		mainBlogHeading: "",
@@ -118,7 +118,7 @@ export const BlogPost = (props: BlogPostProps) => {
 			</div>
 
 			<div className={styles.radioContainer}>
-				<label className={styles.radLabel}>
+				<label className={styles.radLabel1}>
 					<div className={styles.radText}>Main Color</div>
 					<input
 						type='color'
@@ -128,7 +128,7 @@ export const BlogPost = (props: BlogPostProps) => {
 						onChange={onChangeHandler}
 					/>
 				</label>
-				<label className={styles.radLabel}>
+				<label className={styles.radLabel1}>
 					<div className={styles.radText}>
 						Secondary Color
 					</div>

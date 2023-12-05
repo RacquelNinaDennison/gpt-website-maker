@@ -8,8 +8,8 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 }) => {
 	const [gptPrompt, setGptPrompt] = useState({
 		nameOfCompany: "",
-		mainColor: "",
-		secondaryColor: "",
+		mainColor: "#ffffff",
+		secondaryColor: "#ffffff",
 		theme: "",
 		storeDescription: "",
 		mainHeading: "",
@@ -136,7 +136,7 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 			/>
 			<br />
 			<div className={styles.radioContainer}>
-				<label className={styles.radLabel}>
+				<label className={styles.radLabel1}>
 					<div className={styles.radText}>Main Color</div>
 					<input
 						type='color'
@@ -146,7 +146,7 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 						onChange={onChangeHandler}
 					/>
 				</label>
-				<label className={styles.radLabel}>
+				<label className={styles.radLabel1}>
 					<div className={styles.radText}>
 						Secondary Color
 					</div>

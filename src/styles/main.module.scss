@@ -199,6 +199,18 @@ $white: rgba(255, 255, 255, 0.3);
 	transition: 0.3s;
 }
 
+.radLabel1 {
+	display: flex;
+	border-radius: 100px;
+	padding: 14px 16px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.radLabel1:hover,
+.radLabel1:focus-within {
+	background: none;
+}
 .radInput:checked ~ .radText {
 	color: black;
 }
