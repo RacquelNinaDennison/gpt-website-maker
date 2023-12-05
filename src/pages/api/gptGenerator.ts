@@ -25,9 +25,9 @@ const handler = async (
 		urlShort.shortUrl
 	);
 	await sendMail(
-		"Link to website",
+		"Link to website | Website Wizard",
 		`${userData.email}`,
-		`Website maker link`,
+		`URL to your webpage`,
 		response
 	);
 	res.json({ success: true, data: urlShort.shortUrl });
