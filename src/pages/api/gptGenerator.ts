@@ -6,6 +6,7 @@ import axios, { AxiosResponse } from "axios";
 import { Shorten } from "@/types/apiShorten";
 import { sendMail } from "../../utils/utils";
 import { use } from "react";
+import { getHtmlTemplate } from "@/GPT Functions/form";
 
 const handler = async (
 	req: ExtendedNextApiRequest,
@@ -19,7 +20,10 @@ const handler = async (
 	);
 
 	const urlShort: Shorten = urlShorten.data;
-	const response = `The link to your webpage is ${urlShort.shortUrl}. Thank you for making use of our service :)`;
+	const response = getHtmlTemplate(
+		username,
+		urlShort.shortUrl
+	);
 	await sendMail(
 		"Link to website",
 		`${userData.email}`,
