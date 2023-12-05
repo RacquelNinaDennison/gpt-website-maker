@@ -38,7 +38,7 @@ export default function Home() {
 				<div className={styles.container}>
 					<form>
 						<h1 className={styles.text}>
-							Welcome to the website generator
+							Welcome to the Website Wizard generator
 						</h1>
 						<p className={styles.text1}>
 							Creating websites powered by GPT

@@ -135,6 +135,15 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 				className={styles.inputTag}
 			/>
 			<br />
+			<input
+				type='text'
+				placeholder='Theme of webpage'
+				onChange={onChangeHandler}
+				name='theme'
+				value={gptPrompt.theme}
+				className={styles.inputTag}
+			/>
+			<br />
 			<div className={styles.radioContainer}>
 				<label className={styles.radLabel1}>
 					<div className={styles.radText}>Main Color</div>

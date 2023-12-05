@@ -20,6 +20,7 @@ export type gptPrompt = {
 	subHeading: string;
 	webPageType: string;
 	email: string;
+	product: string;
 };
 
 export type gptBlogPrompt = {

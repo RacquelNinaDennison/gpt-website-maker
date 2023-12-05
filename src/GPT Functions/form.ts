@@ -41,7 +41,7 @@ export const generateGPTPrompt = (
 	
 	End of description for the blog post landing page layout. The main theme of the webpage is ${userInput.postType}. For all of the images, add a rounded boarder to them and a shadow. 
 
-	For all items that are shown such as products sold, place three dummy cards to fill up the page
+	For all items that are shown such as products sold, place three dummy cards to fill up the page. Ensure that all the text is visiable and no buttons overlap the text
 	`;
 	}
 	if (input.webPageType === "Market Place") {
@@ -61,11 +61,13 @@ export const generateGPTPrompt = (
         
         - A hero section with the main heading: ${userInput.mainHeading}, and a subheading: ${userInput.subHeading}. Place these to the right with appropriate margins. Include an image representing the business to the left, ensuring balanced spacing. Make sure that there is a spacing between the image and the headings given. 
 
-        - A product showcase area featuring top-selling or featured items. Use a grid layout with each product displayed with an image, brief description, and a 'Buy Now' button. Ensure the images are uniform in size, and the descriptions are concise.
+        - A product showcase area featuring top-selling or featured items. Use a grid layout with each product displayed with an image, brief description, and a 'Buy Now' button. Ensure the images are uniform in size, and the descriptions are concise. Add three products with cards encapsuling them. Add some description about the products. The products should be based on ${userInput.product}
 
-        - Customer testimonials section with a carousel feature. Include short quotes, names, and designations. Use a lighter shade of the main theme for the background.
+        - Customer testimonials section with a carousel feature. Include short quotes, names, and designations. Use a lighter shade of the main theme for the background. Add this into the html code. you can aslo add the javascript for it in the code
 
         - A subscription section for newsletters or updates. Include an inviting text, email input field, and a styled submit button.
+
+		- Add a form at the bottom that allows users to contact the company
 
         - The footer should contain social media links, a copyright notice, and a sitemap. Use a slightly darker background than the main theme with contrasting text for readability.
 
@@ -105,7 +107,7 @@ export const generateGPTPrompt = (
 		When including the partner, be sure to add their names. Style dummy names in a row next to each other with the right amount of paddig and margins. The partners shouldnt have images as that looks unprofessional
 
 		Style the images to have rounded edges and to be clean. They should have a strong apperance. 
-		
+
 		The overall design should be clean and reflect material design principles. All images should be generated with the src 
 		link to unsplash and should also be styled with an added shadow. Give the entire code, flesing out all the sections. Make sure to include all the information described above. The code should be completed to be immediately deployed
 		
