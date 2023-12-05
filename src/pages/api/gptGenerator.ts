@@ -12,10 +12,7 @@ const handler = async (
 	res: NextApiResponse<gptGeneratorResponse>
 ) => {
 	const { username, userData } = req.body.data;
-	const { url, contentHtml } = await run(
-		userData,
-		username
-	);
+	const { url } = await run(userData, username);
 	const urlShorten: AxiosResponse = await axios.post(
 		"https://shortenr-steel.vercel.app/api/shorten",
 		{ url: url }
