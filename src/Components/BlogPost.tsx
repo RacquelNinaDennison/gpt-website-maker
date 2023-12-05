@@ -1,6 +1,7 @@
 import BlogPostProps from "@/interfaces/components";
 import styles from "@/styles/main.module.scss";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 export const BlogPost = (props: BlogPostProps) => {
 	const [gptPrompt, setGptPrompt] = useState({
@@ -30,17 +31,31 @@ export const BlogPost = (props: BlogPostProps) => {
 			}));
 		}
 	};
-
+	const isFormValid = () => {
+		return (
+			userName.trim() !== "" &&
+			gptPrompt.email.trim() !== "" &&
+			gptPrompt.blogName.trim() !== "" &&
+			gptPrompt.blogDescription.trim() !== "" &&
+			gptPrompt.mainBlogHeading.trim() !== "" &&
+			gptPrompt.subHeading.trim() !== "" &&
+			gptPrompt.postType.trim() !== ""
+		);
+	};
 	const submitForm = async (
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
-		props.createTemplate.mutate({
-			data: {
-				userData: gptPrompt,
-				username: userName,
-			},
-		});
+		if (isFormValid()) {
+			props.createTemplate.mutate({
+				data: {
+					userData: gptPrompt,
+					username: userName,
+				},
+			});
+		} else {
+			toast.error("All fields need to be completed");
+		}
 	};
 
 	return (

@@ -17,7 +17,7 @@ import { Business } from "@/Components/Business";
 import useWindowSize from "@rooks/use-window-size";
 export default function Home() {
 	const [url, setUrl] = useState("");
-	const [urlGenerated, setUrlGenerated] = useState(true);
+	const [urlGenerated, setUrlGenerated] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("");
 	const { outerHeight, outerWidth } = useWindowSize();

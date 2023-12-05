@@ -116,10 +116,10 @@ form {
 }
 
 form p {
-	font-weight: 500;
+	font-weight: 600;
 	color: black;
 	opacity: 0.7;
-	font-size: 2rem;
+	font-size: 30px;
 	margin-top: -10px;
 	margin-bottom: 30px;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -269,11 +269,11 @@ input[type="color"] {
 	form {
 		width: 80vw;
 		padding: 1em;
-		
 	}
 
 	form p {
-		font-size: 1.5rem; /* Adjust font size for smaller screens */
+		font-size: 30px;
+		font-weight: 600;
 	}
 
 	.container {
@@ -296,9 +296,9 @@ input[type="color"] {
 @media screen and (max-width: 480px) {
 	/* Even smaller adjustments for very small devices */
 	form p {
-		font-size: 1.2rem;
+		font-size: 30px;
+		font-weight: 600;
 	}
-
 	.button {
 		font-size: 0.8rem;
 	}

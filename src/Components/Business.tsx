@@ -1,6 +1,7 @@
 import BlogPostProps from "@/interfaces/components";
 import styles from "@/styles/main.module.scss";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const Business = (props: BlogPostProps) => {
 	const [gptPrompt, setGptPrompt] = useState({
@@ -16,6 +17,18 @@ export const Business = (props: BlogPostProps) => {
 		webPageType: props.selected,
 	});
 	const [userName, setUserName] = useState("");
+	const isFormValid = () => {
+		return (
+			userName.trim() !== "" &&
+			gptPrompt.email.trim() !== "" &&
+			gptPrompt.nameOfCompany.trim() !== "" &&
+			gptPrompt.companyDescription.trim() !== "" &&
+			gptPrompt.companyStory.trim() !== "" &&
+			gptPrompt.mainBlogHeading.trim() !== "" &&
+			gptPrompt.subHeading.trim() !== "" &&
+			gptPrompt.companyServices.trim() !== ""
+		);
+	};
 
 	const onChangeHandler = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -35,12 +48,16 @@ export const Business = (props: BlogPostProps) => {
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
-		props.createTemplate.mutate({
-			data: {
-				userData: gptPrompt,
-				username: userName,
-			},
-		});
+		if (isFormValid()) {
+			props.createTemplate.mutate({
+				data: {
+					userData: gptPrompt,
+					username: userName,
+				},
+			});
+		} else {
+			toast.error("All fields need to be completed");
+		}
 	};
 
 	return (

@@ -1,6 +1,7 @@
 import BlogPostProps from "@/interfaces/components";
 import styles from "@/styles/main.module.scss";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const MarketPlace: React.FC<BlogPostProps> = ({
 	createTemplate,
@@ -21,6 +22,21 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 		product: "",
 	});
 	const [userName, setUserName] = useState("");
+	const isFormValid = () => {
+		return (
+			userName.trim() !== "" &&
+			gptPrompt.email.trim() !== "" &&
+			gptPrompt.nameOfCompany.trim() !== "" &&
+			gptPrompt.storeDescription.trim() !== "" &&
+			gptPrompt.companySolgan.trim() !== "" &&
+			gptPrompt.companyVision.trim() !== "" &&
+			gptPrompt.mainHeading.trim() !== "" &&
+			gptPrompt.subHeading.trim() !== "" &&
+			gptPrompt.product.trim() !== "" &&
+			gptPrompt.theme.trim() !== ""
+		);
+	};
+
 	const onChangeHandler = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
@@ -39,13 +55,16 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 		event: React.MouseEvent<HTMLElement>
 	) => {
 		event.preventDefault();
-
-		createTemplate.mutate({
-			data: {
-				userData: gptPrompt,
-				username: userName,
-			},
-		});
+		if (isFormValid()) {
+			createTemplate.mutate({
+				data: {
+					userData: gptPrompt,
+					username: userName,
+				},
+			});
+		} else {
+			toast.error("All fields need to be completed");
+		}
 	};
 	return (
 		<>
