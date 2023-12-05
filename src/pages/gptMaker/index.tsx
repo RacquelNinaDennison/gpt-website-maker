@@ -14,11 +14,15 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MarketPlace } from "@/Components/MarketPlace";
 import { Business } from "@/Components/Business";
+import useWindowSize from "@rooks/use-window-size";
 export default function Home() {
 	const [url, setUrl] = useState("");
-	const [urlGenerated, setUrlGenerated] = useState(false);
+	const [urlGenerated, setUrlGenerated] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("");
+	const { outerHeight, outerWidth } = useWindowSize();
+	const width = outerWidth as number;
+	const height = outerHeight as number;
 	let apiTimeout: ReturnType<typeof setTimeout>;
 	const handleRadioChange = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -97,7 +101,6 @@ export default function Home() {
 			<main>
 				{isLoading ? (
 					<div className={styles.container}>
-						<h1>Loading Webpage</h1>
 						<Loader />
 					</div>
 				) : !urlGenerated ? (
@@ -202,7 +205,7 @@ export default function Home() {
 					</div>
 				) : (
 					<>
-						<Confetti width={3000} height={1000} />
+						<Confetti width={width} height={height} />
 						<div
 							className={`${styles.container} ${styles.container1}`}
 						>

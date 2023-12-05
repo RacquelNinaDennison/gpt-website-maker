@@ -247,3 +247,51 @@ $white: rgba(255, 255, 255, 0.3);
 		border-radius: 50%; // Makes the color swatch round
 	}
 }
+@media screen and (max-width: 768px) {
+	.container {
+		width: 90%;
+		top: 50%;
+		left: 55%;
+		transform: translate(-50%, -50%);
+	}
+	.container1 {
+		width: 90%;
+		top: 50%;
+		left: 55%;
+		transform: translate(-50%, -50%);
+	}
+	.drop {
+		display: none;
+	}
+	.radText {
+		color: black;
+		margin-left: 10px;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: 900;
+		transition: 0.3s;
+	}
+	.radioContainer {
+		display: flex;
+		flex-direction: column;
+		place-content: center;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	.blur {
+		background: $white;
+		padding: 3em;
+		width: 80vw;
+		border-radius: 20px;
+		border-left: 1px solid $white;
+		border-top: 1px solid $white;
+		backdrop-filter: blur(10px);
+		box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+		text-align: center;
+		position: relative;
+		transition: all 0.2s ease-in-out;
+		display: flex;
+		justify-content: center;
+	}
+}
