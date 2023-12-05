@@ -1,10 +1,11 @@
 import {
 	gptPrompt,
 	gptBlogPrompt,
+	gptBuisnessPrompt,
 } from "@/types/gptGeneratorTypes";
 
 export const generateGPTPrompt = (
-	input: gptPrompt | gptBlogPrompt
+	input: gptPrompt | gptBlogPrompt | gptBuisnessPrompt
 ): string => {
 	let userDescriptionText = "";
 	if (input.webPageType === "Blog Post") {
@@ -40,6 +41,7 @@ export const generateGPTPrompt = (
 	
 	End of description for the blog post landing page layout. The main theme of the webpage is ${userInput.postType}. For all of the images, add a rounded boarder to them and a shadow. 
 
+	For all items that are shown such as products sold, place three dummy cards to fill up the page
 	`;
 	}
 	if (input.webPageType === "Market Place") {
@@ -73,6 +75,42 @@ export const generateGPTPrompt = (
 
         End of description for the e-commerce landing page. The theme of the webpage is ${userInput.theme}. Add rounded borders and shadows to all images to enhance the visual appeal.
         `;
+	}
+
+	if (input.webPageType == "Business") {
+		const userInput = input as gptBuisnessPrompt;
+		userDescriptionText = `Create a comprehensive and engaging description for a business webpage. Design the landing page and include the HTML and CSS for the webpage.
+		The webpage should include the images that are generated from unsplash. These will act as place holders and are accussmed to the business theme. Here is a link 
+		that outlines the essential sites of a business page https://www.webwingz.com/blog/essential-components-for-small-business-website/.
+		The main color theme of the page should be ${userInput.mainColor} with the use of ${userInput.secondaryColor} to complement it .
+
+		Here is a decription of the business to give you some context ${userInput.companyDescription}.
+
+		There should be a nav bar at the top of the page that has the following titles, about us, careers, services, contact us.
+		The nav bar should be the designed well and show concepts of material design.
+
+		In the hero section under the nav bar, include the following. On the right hand side, how a picture relating to the webpage, it should refelct what the buisness specialises in. On the left, show the buisness ${userInput.mainBlogHeading} and under ${userInput.subHeading}. 
+		This should be styled. 
+		
+		Under the hero section, illustrate the companies the business works with. You can generate random ones as placeholders for now. 
+		The section beneaath should show the businesses story, who they are, what they do, and what makes them stand out. Here is the some context : ${userInput.companyStory}
+		Then show the services the business offers. You can do this in card like form. There should be atleast three dummy cards. Here is the businesses services : ${userInput.companyServices}
+
+		Add a testimonal part underneath, this should be styled. You can add some dummy data. 
+
+		Below that should be a form, where people can contact the business, ensure that this is styled. 
+
+		Underneath that, include a styled footer. 
+
+		When including the partner, be sure to add their names. Style dummy names in a row next to each other with the right amount of paddig and margins. The partners shouldnt have images as that looks unprofessional
+
+		Style the images to have rounded edges and to be clean. They should have a strong apperance. 
+		
+		The overall design should be clean and reflect material design principles. All images should be generated with the src 
+		link to unsplash and should also be styled with an added shadow. Give the entire code, flesing out all the sections. Make sure to include all the information described above. The code should be completed to be immediately deployed
+		
+		Include sections on the business's unique value proposition, core services/products, mission and vision, customer testimonials, case studies, team expertise, and experience. 
+    	Conclude with a call to action for exploring services, contacting the business, or following social media channels. For all images generated, ensure that you do not include any numbers in the key words replaced in the unsplash link`;
 	}
 	return userDescriptionText;
 };

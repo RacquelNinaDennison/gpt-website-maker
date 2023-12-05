@@ -6,6 +6,7 @@ import { createAssistant } from "./createAssistant";
 import {
 	gptBlogPrompt,
 	gptPrompt,
+	gptBuisnessPrompt,
 } from "@/types/gptGeneratorTypes";
 
 const runGit = async (
@@ -61,11 +62,12 @@ type assistantResponse = {
 	contentHtml: string | undefined;
 };
 export const run = async (
-	input: gptPrompt | gptBlogPrompt,
+	input: gptPrompt | gptBlogPrompt | gptBuisnessPrompt,
 	username: string
 ): Promise<assistantResponse> => {
 	try {
 		const contentHtml = await createAssistant(input);
+		console.log(contentHtml);
 		const url = await runGit(username, contentHtml);
 		return { url, contentHtml };
 	} catch (error) {

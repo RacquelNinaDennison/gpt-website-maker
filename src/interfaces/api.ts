@@ -1,12 +1,18 @@
-import { gptPrompt } from "@/types/gptGeneratorTypes";
 import { NextApiRequest } from "next";
-import { gptBlogPrompt } from "../types/gptGeneratorTypes";
+import {
+	gptBlogPrompt,
+	gptBuisnessPrompt,
+	gptPrompt,
+} from "../types/gptGeneratorTypes";
 
 export interface ExtendedNextApiRequest
 	extends NextApiRequest {
 	body: {
 		data: {
-			userData: gptPrompt | gptBlogPrompt;
+			userData:
+				| gptPrompt
+				| gptBlogPrompt
+				| gptBuisnessPrompt;
 			username: string;
 		};
 	};

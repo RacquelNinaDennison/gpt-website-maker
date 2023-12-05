@@ -8,11 +8,11 @@ export const Business = (props: BlogPostProps) => {
 		mainColor: "#ffffff",
 		secondaryColor: "#ffffff",
 		email: "",
-		blogDescription: "",
+		companyDescription: "",
 		mainBlogHeading: "",
 		subHeading: "",
-		postType: "",
-		blogName: "",
+		companyStory: "",
+		companyServices: "",
 		webPageType: props.selected,
 	});
 	const [userName, setUserName] = useState("");
@@ -68,19 +68,19 @@ export const Business = (props: BlogPostProps) => {
 			<div className={styles.row1}>
 				<input
 					type='text'
-					placeholder='Name of the blog'
+					placeholder='Company Name'
 					onChange={onChangeHandler}
-					name='blogName'
-					value={gptPrompt.blogName}
+					name='nameOfCompany'
+					value={gptPrompt.nameOfCompany}
 					className={styles.inputTag}
 				/>
 				<br />
 				<input
 					type='text'
-					placeholder='Describe your blog a bit'
+					placeholder='Company Story'
 					onChange={onChangeHandler}
-					name='blogDescription'
-					value={gptPrompt.blogDescription}
+					name='companyStory'
+					value={gptPrompt.companyStory}
 					className={styles.inputTag}
 				/>
 				<br />
@@ -88,10 +88,10 @@ export const Business = (props: BlogPostProps) => {
 
 			<input
 				type='text'
-				placeholder='What types of posts do you write about'
+				placeholder='Company Description'
 				onChange={onChangeHandler}
-				name='postType'
-				value={gptPrompt.postType}
+				name='companyDescription'
+				value={gptPrompt.companyDescription}
 				className={styles.inputTag}
 			/>
 
@@ -99,7 +99,7 @@ export const Business = (props: BlogPostProps) => {
 			<div className={styles.row1}>
 				<input
 					type='text'
-					placeholder='Blog headline'
+					placeholder='Company Mission'
 					onChange={onChangeHandler}
 					name='mainBlogHeading'
 					value={gptPrompt.mainBlogHeading}
@@ -108,7 +108,7 @@ export const Business = (props: BlogPostProps) => {
 				<br />
 				<input
 					type='text'
-					placeholder='Subheading'
+					placeholder='Company slogan'
 					onChange={onChangeHandler}
 					name='subHeading'
 					value={gptPrompt.subHeading}
@@ -116,6 +116,17 @@ export const Business = (props: BlogPostProps) => {
 				/>
 				<br />
 			</div>
+			<br />
+
+			<input
+				type='text'
+				placeholder='What services does your company offer?'
+				onChange={onChangeHandler}
+				name='companyServices'
+				value={gptPrompt.companyServices}
+				className={styles.inputTag}
+			/>
+			<br />
 
 			<div className={styles.radioContainer}>
 				<label className={styles.radLabel1}>

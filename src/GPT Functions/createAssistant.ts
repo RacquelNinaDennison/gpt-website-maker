@@ -7,13 +7,14 @@ import { generateGPTPrompt } from "./form";
 import {
 	gptBlogPrompt,
 	gptPrompt,
+	gptBuisnessPrompt,
 } from "@/types/gptGeneratorTypes";
 dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.API_KEY });
 
 export const createAssistant = async (
-	input: gptPrompt | gptBlogPrompt
+	input: gptPrompt | gptBlogPrompt | gptBuisnessPrompt
 ) => {
 	try {
 		const myWebpageAssistant =
