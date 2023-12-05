@@ -13,6 +13,7 @@ import { Loader } from "../../Components/loader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MarketPlace } from "@/Components/MarketPlace";
+import { Business } from "@/Components/Business";
 export default function Home() {
 	const [url, setUrl] = useState("");
 	const [urlGenerated, setUrlGenerated] = useState(false);
@@ -143,6 +144,20 @@ export default function Home() {
 										Market Place
 									</div>
 								</label>
+								<label className={styles.radLabel}>
+									<input
+										type='radio'
+										className={styles.radInput}
+										name='rad'
+										value='Business'
+										checked={selectedOption === "Business"}
+										onChange={handleRadioChange}
+									/>
+									<div className={styles.radDesign}></div>
+									<div className={styles.radText}>
+										Business Site
+									</div>
+								</label>
 							</div>
 							<br />
 
@@ -154,6 +169,12 @@ export default function Home() {
 							)}
 							{selectedOption == "Market Place" && (
 								<MarketPlace
+									createTemplate={createTemplate}
+									selected={selectedOption}
+								/>
+							)}
+							{selectedOption == "Business" && (
+								<Business
 									createTemplate={createTemplate}
 									selected={selectedOption}
 								/>
