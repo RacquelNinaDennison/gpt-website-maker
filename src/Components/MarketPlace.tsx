@@ -92,7 +92,7 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 					type='text'
 					placeholder='Company Slogan'
 					onChange={onChangeHandler}
-					name='companySlogan'
+					name='companySolgan'
 					value={gptPrompt.companySolgan}
 					className={styles.inputTag}
 				/>
@@ -106,25 +106,7 @@ export const MarketPlace: React.FC<BlogPostProps> = ({
 				/>
 				<br />
 			</div>
-			<div className={styles.row1}>
-				<input
-					type='text'
-					placeholder='Main color theme'
-					onChange={onChangeHandler}
-					name='userName'
-					value={gptPrompt.mainColor}
-					className={styles.inputTag}
-				/>
-				<br />
-				<input
-					type='text'
-					placeholder='Second color choice'
-					onChange={onChangeHandler}
-					name='theme'
-					value={gptPrompt.secondaryColor}
-				/>
-				<br />
-			</div>
+
 			<div className={styles.row1}>
 				<input
 					type='text'

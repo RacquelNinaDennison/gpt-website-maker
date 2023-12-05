@@ -56,15 +56,18 @@ const runGit = async (
 		throw error;
 	}
 };
-
+type assistantResponse = {
+	url: string;
+	contentHtml: string | undefined;
+};
 export const run = async (
 	input: gptPrompt | gptBlogPrompt,
 	username: string
-) => {
+): Promise<assistantResponse> => {
 	try {
 		const contentHtml = await createAssistant(input);
 		const url = await runGit(username, contentHtml);
-		return url;
+		return { url, contentHtml };
 	} catch (error) {
 		console.error("Error in run:", error);
 

@@ -42,5 +42,37 @@ export const generateGPTPrompt = (
 
 	`;
 	}
+	if (input.webPageType === "Market Place") {
+		const userInput = input as gptPrompt;
+		userDescriptionText = `
+        Design a landing page for an e-commerce site. This needs to be a webpage that showcases a modern, user-friendly online store. The main colour theme is #${userInput.mainColor} with accents of #${userInput.secondaryColor}.
+
+        Provide the HTML and CSS code as per the description below. The code should be in one file, with the CSS in a style tag within the HTML. For placeholder images, use links to unsplash. Size the images appropriately with CSS, ensuring they complement the layout without overwhelming it.
+
+        Below is a bit of context for the site:
+
+        ${userInput.storeDescription}.
+
+        The landing page should include:
+
+        - A navigation bar at the top with the main theme color. Include links to CATEGORIES, ABOUT US, and CONTACT. Make the text stand out with a contrasting color. On hover, add a circular border with a soft radius, complementing the page theme.
+        
+        - A hero section with the main heading: ${userInput.mainHeading}, and a subheading: ${userInput.subHeading}. Place these to the right with appropriate margins. Include an image representing the business to the left, ensuring balanced spacing. Make sure that there is a spacing between the image and the headings given. 
+
+        - A product showcase area featuring top-selling or featured items. Use a grid layout with each product displayed with an image, brief description, and a 'Buy Now' button. Ensure the images are uniform in size, and the descriptions are concise.
+
+        - Customer testimonials section with a carousel feature. Include short quotes, names, and designations. Use a lighter shade of the main theme for the background.
+
+        - A subscription section for newsletters or updates. Include an inviting text, email input field, and a styled submit button.
+
+        - The footer should contain social media links, a copyright notice, and a sitemap. Use a slightly darker background than the main theme with contrasting text for readability.
+
+        Throughout, maintain consistent and legible typography. Use serif for headings and sans-serif for body text, ensuring responsiveness for different devices.
+
+        Finally, ensure the webpage is fully responsive, rendering well across various devices. Use media queries in CSS to adjust elements and font sizes.
+
+        End of description for the e-commerce landing page. The theme of the webpage is ${userInput.theme}. Add rounded borders and shadows to all images to enhance the visual appeal.
+        `;
+	}
 	return userDescriptionText;
 };

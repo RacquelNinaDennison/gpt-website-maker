@@ -9,8 +9,8 @@ export const BlogPost = (props: BlogPostProps) => {
 		secondaryColor: "#ffffff", // Default color for secondary color
 		email: "",
 		blogDescription: "",
-		mainBlogHeading: "Reimagine greatness",
-		subHeading: "Greatness",
+		mainBlogHeading: "",
+		subHeading: "",
 		postType: "",
 		blogName: "",
 		webPageType: props.selected,
@@ -96,6 +96,26 @@ export const BlogPost = (props: BlogPostProps) => {
 			/>
 
 			<br />
+			<div className={styles.row1}>
+				<input
+					type='text'
+					placeholder='Blog headline'
+					onChange={onChangeHandler}
+					name='mainBlogHeading'
+					value={gptPrompt.mainBlogHeading}
+					className={styles.inputTag}
+				/>
+				<br />
+				<input
+					type='text'
+					placeholder='Subheading'
+					onChange={onChangeHandler}
+					name='subHeading'
+					value={gptPrompt.subHeading}
+					className={styles.inputTag}
+				/>
+				<br />
+			</div>
 
 			<div className={styles.radioContainer}>
 				<label className={styles.radLabel}>

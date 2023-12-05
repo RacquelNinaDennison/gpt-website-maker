@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { MarketPlace } from "@/Components/MarketPlace";
 export default function Home() {
 	const [url, setUrl] = useState("");
-	const [urlGenerated, setUrlGenerated] = useState(true);
+	const [urlGenerated, setUrlGenerated] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("");
 	let apiTimeout: ReturnType<typeof setTimeout>;
@@ -64,10 +64,10 @@ export default function Home() {
 		onMutate: () => {
 			apiTimeout = setTimeout(() => {
 				toast.info(
-					"Request is taking longer than expected. The link and code will be emailed to you."
+					"Request is taking longer than expected. The link will be emailed to you."
 				);
 				setUrlGenerated(false);
-			}, 10000);
+			}, 20000);
 		},
 		onError: (err: Error) => {
 			clearTimeout(apiTimeout);

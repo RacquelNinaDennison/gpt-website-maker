@@ -4,7 +4,10 @@ import { extractHtmlFromAssistantAsAVariable } from "./extractHtml";
 import dotenv from "dotenv";
 import sleep from "@/utils/utils";
 import { generateGPTPrompt } from "./form";
-import { gptBlogPrompt, gptPrompt } from "@/types/gptGeneratorTypes";
+import {
+	gptBlogPrompt,
+	gptPrompt,
+} from "@/types/gptGeneratorTypes";
 dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.API_KEY });
@@ -54,6 +57,7 @@ export const createAssistant = async (
 
 		const htmlFile =
 			extractHtmlFromAssistantAsAVariable(message);
+
 		return htmlFile;
 	} catch (error) {
 		console.log(error);
