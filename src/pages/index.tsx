@@ -15,7 +15,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Website Maker</title>
+				<title>Website Wizard</title>
 				<meta
 					name='description'
 					content='Website maker app'
